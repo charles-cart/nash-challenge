@@ -38,7 +38,7 @@ export class BooksService {
 
     const allPromises = await Promise.allSettled(promises);
 
-    let data = allPromises.reduce(
+    const data = allPromises.reduce(
       (acc: FindAllResponseDto[], result: PromiseFulfilledResult<any>) => {
         if (result.value.status === 'fulfilled') {
           const exchange = result.value.exchange.toLowerCase();
@@ -49,15 +49,6 @@ export class BooksService {
       },
       [],
     );
-
-    data = data.filter((item) => {
-      return (
-        item.bids.length > 1 &&
-        item.bids[0].length > 0 &&
-        item.asks.length > 1 &&
-        item.asks[0].length > 0
-      );
-    });
 
     this.sortBidsAndAsks(data, SortType.DESC, SortType.ASC);
 

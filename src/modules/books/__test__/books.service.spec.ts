@@ -1,3 +1,5 @@
+import * as helper from '../../../common/helpers/useful-functions.helper';
+
 import { HttpModule, HttpService } from '@nestjs/axios';
 import {
   OrderBooksStub,
@@ -13,8 +15,6 @@ import { ConfigModule } from '@nestjs/config';
 import { FindAllQueryBookDto } from '../dto/find-all-query-book.dto';
 import { SortType } from '../../../common/enum.model';
 import env from '../../../config/environment';
-
-jest.mock('moment', () => () => ({ format: () => dateStub }));
 
 describe('BooksService', () => {
   let service: BooksService;
@@ -42,6 +42,7 @@ describe('BooksService', () => {
 
     beforeEach(() => {
       consoleSpy = jest.spyOn(console, 'log').mockImplementation(); // No quiero logs en mis unit test
+      jest.spyOn(helper, 'toLocalString').mockReturnValue(dateStub);
     });
 
     afterEach(() => {

@@ -11,7 +11,7 @@ import { ObjDto } from './dto/obj.dto';
 import { SortType } from '../../common/enum.model';
 import _ from 'underscore';
 import env from '../../config/environment';
-import * as moment from 'moment';
+import { toLocalString } from '../../common/helpers/useful-functions.helper';
 
 @Injectable()
 export class BooksService {
@@ -75,7 +75,7 @@ export class BooksService {
     const symbol = `${baseCoin}${splitter}${quoteCoin}`;
 
     return {
-      date: moment().toISOString(true),
+      date: toLocalString(),
       exchange,
       promise: this.httpService.axiosRef.request({
         url,

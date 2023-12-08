@@ -11,6 +11,7 @@ import { ObjDto } from './dto/obj.dto';
 import { SortType } from '../../common/enum.model';
 import _ from 'underscore';
 import env from '../../config/environment';
+import * as moment from 'moment';
 
 @Injectable()
 export class BooksService {
@@ -29,19 +30,15 @@ export class BooksService {
         reqs.push(this.createRequest(exchanges[key], query, key.toUpperCase()));
     }
 
-    const promises = reqs.map(({ exchange, promise }) =>
+    const promises = reqs.map(({ date, exchange, promise }) =>
       promise
-        .then(({ data }: AxiosResponse) => ({
-          exchange,
-          status: 'fulfilled',
-          data,
-        }))
+        .then(({ data }: AxiosResponse) => ({ date, exchange, status: 'fulfilled', data }))
         .catch((reason) => ({ exchange, status: 'rejected', reason })),
     );
 
     const allPromises = await Promise.allSettled(promises);
 
-    const data = allPromises.reduce(
+    let data = allPromises.reduce(
       (acc: FindAllResponseDto[], result: PromiseFulfilledResult<any>) => {
         if (result.value.status === 'fulfilled') {
           const exchange = result.value.exchange.toLowerCase();
@@ -52,6 +49,15 @@ export class BooksService {
       },
       [],
     );
+
+    data = data.filter((item) => {
+      return (
+        item.bids.length > 1 &&
+        item.bids[0].length > 0 &&
+        item.asks.length > 1 &&
+        item.asks[0].length > 0
+      );
+    });
 
     this.sortBidsAndAsks(data, SortType.DESC, SortType.ASC);
 
@@ -69,6 +75,7 @@ export class BooksService {
     const symbol = `${baseCoin}${splitter}${quoteCoin}`;
 
     return {
+      date: moment().format(),
       exchange,
       promise: this.httpService.axiosRef.request({
         url,
@@ -78,8 +85,8 @@ export class BooksService {
   }
 
   extractData(obj: ObjDto, paths: string[][]): FindAllResponseDto {
-    const { exchange } = obj;
-    const result: FindAllResponseDto = { exchange, bids: [], asks: [] };
+    const { exchange, date } = obj;
+    const result: FindAllResponseDto = { date, exchange, bids: [], asks: [] };
 
     paths.forEach((path) => {
       result[path[path.length - 1]] = _.get<string[][]>(obj.data, path, [[]]);

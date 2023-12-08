@@ -4,6 +4,7 @@ import {
   ResponseBinanceStub,
   ResponseBitmartStub,
   dataSortedStub,
+  dateStub,
 } from '../__mocks__/stubs/books.stub';
 import { Test, TestingModule } from '@nestjs/testing';
 
@@ -12,6 +13,8 @@ import { ConfigModule } from '@nestjs/config';
 import { FindAllQueryBookDto } from '../dto/find-all-query-book.dto';
 import { SortType } from '../../../common/enum.model';
 import env from '../../../config/environment';
+
+jest.mock('moment', () => () => ({ format: () => dateStub }));
 
 describe('BooksService', () => {
   let service: BooksService;

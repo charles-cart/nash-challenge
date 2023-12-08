@@ -2,6 +2,9 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class FindAllResponseDto {
   @ApiProperty()
+  date: string;
+
+  @ApiProperty()
   exchange: string;
 
   @ApiProperty({

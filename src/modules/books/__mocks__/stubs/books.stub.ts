@@ -1,3 +1,5 @@
+const date = '2022-03-15T10:20:30.456Z';
+
 const asks = [
   ['43258.66', '0.02244'],
   ['43258.67', '0.01743'],
@@ -19,8 +21,8 @@ const bidsSortedAsc = [
 ];
 
 export const OrderBooksStub = () => [
-  { exchange: 'BITMART', asks, bids },
-  { exchange: 'BINANCE', bids, asks },
+  { date, exchange: 'BITMART', asks, bids },
+  { date, exchange: 'BINANCE', bids, asks },
 ];
 
 export const ResponseBitmartStub = () => ({
@@ -42,14 +44,8 @@ export const ResponseBinanceStub = () => ({
 });
 
 export const dataSortedStub = () => [
-  {
-    exchange: 'BITMART',
-    asks: asksSortedDesc,
-    bids: bidsSortedAsc,
-  },
-  {
-    exchange: 'BINANCE',
-    bids: bidsSortedAsc,
-    asks: asksSortedDesc,
-  },
+  { date, exchange: 'BITMART', asks: asksSortedDesc, bids: bidsSortedAsc },
+  { date, exchange: 'BINANCE', bids: bidsSortedAsc, asks: asksSortedDesc },
 ];
+
+export const dateStub = date;

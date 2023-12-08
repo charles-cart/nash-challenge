@@ -75,7 +75,7 @@ export class BooksService {
     const symbol = `${baseCoin}${splitter}${quoteCoin}`;
 
     return {
-      date: moment().format(),
+      date: moment().toISOString(true),
       exchange,
       promise: this.httpService.axiosRef.request({
         url,

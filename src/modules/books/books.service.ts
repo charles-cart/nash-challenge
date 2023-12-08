@@ -4,7 +4,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { AxiosResponse } from 'axios';
 import { ConfigExchangeDto } from './dto/config-exchange.dto';
 import { ConfigType } from '@nestjs/config';
-import { ExchangeType } from 'src/common/enum.model';
+import { ExchangeType } from '../../common/enum.model';
 import { FindAllResponseDto } from './dto/find-all-response.dto';
 import { HttpService } from '@nestjs/axios';
 import { ObjDto } from './dto/obj.dto';
@@ -53,12 +53,12 @@ export class BooksService {
       [],
     );
 
-    this.sortBidsAndAsks(data, SortType.DESC, SortType.DESC);
+    this.sortBidsAndAsks(data, SortType.DESC, SortType.ASC);
 
     return data;
   }
 
-  private createRequest(
+  createRequest(
     configExchangeDto: ConfigExchangeDto,
     queryDto: QueryDto,
     exchange: string,
@@ -77,7 +77,7 @@ export class BooksService {
     };
   }
 
-  private extractData(obj: ObjDto, paths: string[][]): FindAllResponseDto {
+  extractData(obj: ObjDto, paths: string[][]): FindAllResponseDto {
     const { exchange } = obj;
     const result: FindAllResponseDto = { exchange, bids: [], asks: [] };
 
@@ -88,11 +88,7 @@ export class BooksService {
     return result;
   }
 
-  private sortBidsAndAsks(
-    data: FindAllResponseDto[],
-    bidsOrder: SortType,
-    asksOrder: SortType,
-  ): void {
+  sortBidsAndAsks(data: FindAllResponseDto[], bidsOrder: SortType, asksOrder: SortType): void {
     data.forEach((item) => {
       item.bids.sort((a, b) =>
         bidsOrder === SortType.ASC
@@ -100,7 +96,7 @@ export class BooksService {
           : parseFloat(b[0]) - parseFloat(a[0]),
       );
       item.asks.sort((a, b) =>
-        asksOrder === SortType.DESC
+        asksOrder === SortType.ASC
           ? parseFloat(a[0]) - parseFloat(b[0])
           : parseFloat(b[0]) - parseFloat(a[0]),
       );

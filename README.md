@@ -21,7 +21,7 @@
 </p>
 
 ## Vercel
-This api is working in vercel: [https://nash-challenge-iols.vercel.app/api/v1/docs](https://nash-challenge-iols.vercel.app/api/v1/docs)
+This api is working in vercel: <a href="https://nash-challenge-iols.vercel.app/api/v1/docs" target="_blank">https://nash-challenge-iols.vercel.app/api/v1/docs</a>
 
 ## Installation & Running API
 
@@ -46,10 +46,10 @@ $ npm run test:cov
 ![Jest Coverage](public/coverage.gif)
 
 ## Postman Collection
-[Download postman collection](public/nash_api.postman_collection.json)
+<a href="public/nash_api.postman_collection.json" target="_blank">Download postman collection</a>
 ![Postman Collection](public/postman.gif)
 
 ## Swagger Documentation
 
-Link: [https://nash-challenge-iols.vercel.app/api/v1/docs](https://nash-challenge-iols.vercel.app/api/v1/docs)
+Link: <a href="https://nash-challenge-iols.vercel.app/api/v1/docs" target="_blank">https://nash-challenge-iols.vercel.app/api/v1/docs</a>
 ![Postman collection](public/swagger.gif)

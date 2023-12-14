@@ -19,33 +19,21 @@
     <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
   <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## Vercel
+This api is working in vercel: [https://nash-challenge-iols.vercel.app/api/v1/docs](https://nash-challenge-iols.vercel.app/api/v1/docs)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
+## Installation & Running API
 
 ```bash
+# install dependencies
 $ npm install
-```
 
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
+# running api
 $ npm run start:dev
-
-# production mode
-$ npm run start:prod
 ```
 
-## Test
+## Testing
 
 ```bash
 # unit tests
@@ -53,18 +41,15 @@ $ npm run test
 
 # test coverage
 $ npm run test:cov
+# note: open index.html file located in: /coverage/lcov-report/index.html
 ```
+![Jest Coverage](public/coverage.gif)
 
-## Support
+## Postman Collection
+[Download postman collection](public/nash_api.postman_collection.json)
+![Postman Collection](public/postman.gif)
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Swagger Documentation
 
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+Link: [https://nash-challenge-iols.vercel.app/api/v1/docs](https://nash-challenge-iols.vercel.app/api/v1/docs)
+![Postman collection](public/swagger.gif)

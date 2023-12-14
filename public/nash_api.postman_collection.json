@@ -1,0 +1,176 @@
+{
+	"info": {
+		"_postman_id": "7154e1c0-d368-4e3f-9d28-a2d72585220d",
+		"name": "Nash API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11620246",
+		"_collection_link": "https://speeding-escape-243980.postman.co/workspace/Team-Simtlix~ca089e78-9b97-47c4-8b5a-440563a988fd/collection/11620246-7154e1c0-d368-4e3f-9d28-a2d72585220d?action=share&source=collection_link&creator=11620246"
+	},
+	"item": [
+		{
+			"name": "Module Order Books",
+			"item": [
+				{
+					"name": "get order books [local]",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/books?baseCoin=btc&quoteCoin=usdt",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"books"
+							],
+							"query": [
+								{
+									"key": "exchange",
+									"value": "binance",
+									"disabled": true
+								},
+								{
+									"key": "baseCoin",
+									"value": "btc"
+								},
+								{
+									"key": "quoteCoin",
+									"value": "usdt"
+								},
+								{
+									"key": "limit",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "examples",
+									"value": "ETH_USDT,BTC_USDT,BTC_ETH ",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get order books [vercel]",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "https://nash-challenge-iols.vercel.app/api/v1/books?baseCoin=btc&quoteCoin=usdt&limit=1",
+							"protocol": "https",
+							"host": [
+								"nash-challenge-iols",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"books"
+							],
+							"query": [
+								{
+									"key": "exchange",
+									"value": "binance",
+									"disabled": true
+								},
+								{
+									"key": "baseCoin",
+									"value": "btc"
+								},
+								{
+									"key": "quoteCoin",
+									"value": "usdt"
+								},
+								{
+									"key": "limit",
+									"value": "1"
+								},
+								{
+									"key": "",
+									"value": "ETH_USDT,BTC_USDT,BTC_ETH ",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Module Health",
+			"item": [
+				{
+					"name": "health [local]",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "health [vercel]",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://nash-challenge-iols.vercel.app/api/v1/health",
+							"protocol": "https",
+							"host": [
+								"nash-challenge-iols",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

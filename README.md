@@ -33,6 +33,24 @@ $ npm install
 $ npm run start:dev
 ```
 
+## .env
+```bash
+# NASH API
+APP_NAME=nash-challenge
+APP_PORT=3000
+NODE_ENV=development
+
+# BITMART
+BITMART_BASE_URL=https://api-cloud.bitmart.com/spot/quotation/v3/books
+BITMART_SPLITTER=_
+BITMART_PATHS=[["data","asks"],["data","bids"]]
+
+# BINANCE
+BINANCE_BASE_URL=https://api.binance.com/api/v3/depth
+BINANCE_SPLITTER=""
+BINANCE_PATHS=[["asks"],["bids"]]
+```
+
 ## Testing
 
 ```bash
